@@ -29,36 +29,41 @@
     xhr.send(); // initiates the request
   }
 
-  /////////////////////////////// XMLHttpRequest() ///////////////////////////////
+  /////////////////////////////// Promises ///////////////////////////////
 
-  // xhrSuccess = () => {
-  //   this.callback.apply(this, this.arguments);
-  // }
-
-  // xhrError = () => {
-  //   console.error(this.statusText);
-  // }
-
-  // showMessage = (message) => {
-  //   console.log(message + this.responseText);
-  // }
-
-  // loadFile = (url, callback) => { // hello.txt, showMessage() //
-  //   var xhr = new XMLHttpRequest();
-  //       xhr.callback = callback;
-  //       xhr.arguments = Array.prototype.slice.call(arguments, 2);
-  //       xhr.onload = xhrSuccess;
-  //       xhr.onerror = xhrError;
-  //       xhr.open('GET', url, true);
-  //       xhr.send();
-  // }
-
-  // loadFile('docs/hello.txt', showMessage, 'New message!\n\n');
+  
+  const fetchData = () => {
+     console.log('...Data has been fetched');
+   };
 
 
+   // make API call here.
+   const whileFetching = () => {
+     console.log('Do something while fetching is in progress...');
+   };
+
+   const executeCommand = () => {
+     console.log('Executing...');
+     setTimeout(fetchData, 1000);
+
+     new Promise((resolve, reject) => {
+         resolve("Promise resolved");
+       })
+
+       .then(response => console.log(response))
+       .catch(error => console.log(error));
+
+     whileFetching();
+   };
+
+   executeCommand();
 
 
-  /// asyncAwait(); 
+
+
+  /////////////////////////////// Async Await ///////////////////////////////
+
+
 
   delay = (ms) => {
       return new Promise(function(resolve) {
